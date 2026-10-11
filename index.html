@@ -76,9 +76,11 @@
     <div class="heart-wrap" id="heartWrap" role="button" tabindex="0" aria-label="Tap the heart">
       <div class="heart" id="heart"><span class="shine"></span></div>
     </div>
-    <div class="hint">tap the heart & make a wish</div>
+    <div class="hint">TAP FOR A LITTLE CONFESSION 😏</div>
   </section>
-  <p class="pull">PULL & RELEASE — or simply tap the heart ♡</p>
+  
+<p class="pull" id="confession">Psst… birthday girl, tap that heart. ♡</p>
+  
 
   <section class="card">
     <h2>One thing you should know…</h2>
@@ -94,7 +96,7 @@
     <p>I won't pretend I'm the sort of man who has every feeling neatly explained. But I know what I choose: to keep learning you, to celebrate your wins, to stand beside you on the difficult days, and to make sure you never have to guess whether you matter to me.</p>
     <p>So make a wish today. Laugh too loudly, eat the cake, take too many pictures, and let yourself be celebrated properly. You deserve a year that is gentle with your heart and generous with your dreams.</p>
     <p>And if the world ever forgets to remind you how extraordinary you are, consider this your reminder from someone who pays attention.</p>
-    <p class="signature">Always in your corner,<br><strong>Your favourite troublemaker ♡</strong></p>
+    <p class="signature">Always in your corner,<br><strong> Forever yours, darling. In every lifetime, I'd find my way back to you. 🖤 ⁠♡</strong></p>
   </section>
   <p class="footer">Made with a little courage, a lot of affection, and one pink heart.</p>
 </main>
@@ -119,8 +121,23 @@
       setTimeout(()=>el.remove(),1900);
     }
     heart.animate([{transform:'rotate(-45deg) scale(1)'},{transform:'rotate(-45deg) scale(1.2)'},{transform:'rotate(-45deg) scale(1)'}],{duration:430,easing:'ease-out'});
-  }
-  heartWrap.addEventListener('click', burstHearts);
+  }  
+const confessions = [
+  "You're annoyingly cute. It's honestly unfair. 😏",
+  "My favourite distraction? You. Obviously. ♡",
+  "I tried playing it cool… then you happened. 🖤",
+  "Careful, birthday girl. I'm not planning to leave your side. 😉",
+  "One lifetime? Darling, I'd find you in every one. ❤️"
+];
+
+let confessionIndex = 0;
+
+heartWrap.addEventListener('click', () => {
+  burstHearts();
+  document.getElementById('confession').textContent =
+    confessions[confessionIndex];
+  confessionIndex = (confessionIndex + 1) % confessions.length;
+});
   heartWrap.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();burstHearts();} });
   heartWrap.addEventListener('pointerdown', e => { pointerStart={x:e.clientX,y:e.clientY}; });
   heartWrap.addEventListener('pointerup', e => {
