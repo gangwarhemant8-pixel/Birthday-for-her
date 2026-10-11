@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffe8ef">
+<title>A Little Something, For You ♡</title>
+<style>
+  :root { --pink:#f34f86; --deep:#a92859; --cream:#fff7f4; --ink:#6e344b; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    margin:0; min-height:100vh; overflow-x:hidden; color:var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    background: radial-gradient(circle at 50% 12%, #ffd6e2 0, #fff0f0 32%, #fff9f5 72%);
+  }
+  .grain { position:fixed; inset:0; pointer-events:none; opacity:.13; z-index:0;
+    background-image:radial-gradient(#d889a5 .55px, transparent .55px); background-size:5px 5px; }
+  main { position:relative; z-index:1; width:min(100% - 28px, 520px); margin:0 auto; padding:28px 0 44px; text-align:center; }
+  .eyebrow { margin:7px 0 10px; font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:#ad6d83; }
+  h1 { font-weight:normal; font-size:clamp(2rem, 8vw, 3.3rem); line-height:1.06; margin:0; color:#8f3156; }
+  .sub { font-style:italic; color:#a46c7e; margin:13px auto 23px; font-size:1rem; }
+  .scene {
+    position:relative; min-height:320px; display:grid; place-items:center; overflow:hidden;
+    border:1px solid rgba(220,131,162,.25); border-radius:28px;
+    background:linear-gradient(150deg, rgba(255,255,255,.75), rgba(255,226,235,.76));
+    box-shadow:0 18px 50px rgba(180,76,113,.10);
+  }
+  .halo { position:absolute; width:220px; height:220px; border-radius:50%; background:#ffb3cd; filter:blur(42px); opacity:.46; }
+  .heart-wrap { position:relative; width:170px; height:170px; display:grid; place-items:center; touch-action:pan-y; }
+  .heart {
+    position:relative; width:90px; height:90px; transform:rotate(-45deg);
+    background:linear-gradient(145deg,#ff8fb4,#ed3978); border-radius:10px 0 10px 10px;
+    box-shadow:0 14px 35px rgba(227,53,111,.27);
+    animation:float 2.7s ease-in-out infinite; cursor:pointer; user-select:none;
+  }
+  .heart:before,.heart:after { content:""; position:absolute; width:90px; height:90px; border-radius:50%; background:inherit; }
+  .heart:before { top:-45px; left:0; }
+  .heart:after { left:45px; top:0; }
+  .shine { position:absolute; z-index:2; top:17px; left:24px; width:15px; height:8px; border-radius:50%; background:#fff; opacity:.8; transform:rotate(0deg); }
+  .heart:active { filter:brightness(1.06); }
+  @keyframes float { 0%,100%{ transform:rotate(-45deg) translateY(0) scale(1); } 50%{ transform:rotate(-45deg) translateY(-9px) scale(1.04); } }
+  .spark { position:absolute; color:#e6a0b7; animation:twinkle 2.5s ease-in-out infinite; }
+  .s1{top:18%;left:18%;font-size:24px}.s2{top:24%;right:16%;font-size:18px;animation-delay:.6s}.s3{bottom:19%;left:20%;font-size:17px;animation-delay:1s}.s4{bottom:17%;right:19%;font-size:25px;animation-delay:.3s}
+  @keyframes twinkle { 0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)} }
+  .hint { position:absolute; bottom:24px; left:10px; right:10px; font-size:.7rem; letter-spacing:.18em; color:#ad7186; text-transform:uppercase; }
+  .pull { margin:15px 0 0; color:#b2778c; font-size:.84rem; font-style:italic; }
+  .card { margin-top:22px; padding:25px 22px; background:rgba(255,255,255,.68); border:1px solid rgba(220,131,162,.24); border-radius:24px; box-shadow:0 12px 35px rgba(180,76,113,.07); }
+  .card h2 { margin:0 0 13px; font-size:1.45rem; font-weight:normal; color:#923252; }
+  .message { font-size:1.04rem; line-height:1.75; margin:0; }
+  .signature { margin:18px 0 0; font-style:italic; color:#a24c70; }
+  button { border:0; border-radius:999px; padding:13px 21px; font:600 .92rem Arial,sans-serif; cursor:pointer; transition:transform .2s, box-shadow .2s; }
+  button:active { transform:scale(.98); }
+  .primary { margin-top:20px; color:white; background:linear-gradient(135deg,#f66b9a,#d93670); box-shadow:0 8px 22px #ed7ca14d; }
+  .letter { display:none; text-align:left; animation:appear .7s ease both; }
+  .letter.show { display:block; }
+  .letter p { line-height:1.8; margin:0 0 13px; }
+  @keyframes appear { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+  .footer { font-size:.76rem; color:#b18596; margin:25px 0 0; letter-spacing:.04em; }
+  .burst { position:fixed; z-index:5; pointer-events:none; animation:burst 1.7s ease-out forwards; font-size:20px; }
+  @keyframes burst { 0%{opacity:0;transform:translateY(0) scale(.4) rotate(0)} 15%{opacity:1} 100%{opacity:0;transform:translateY(-170px) scale(1.2) rotate(28deg)} }
+  @media (max-width:380px) { .scene{min-height:290px}.card{padding:21px 17px}.heart-wrap{transform:scale(.9)} }
+  @media (prefers-reduced-motion: reduce) { *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important} }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<main>
+  <p class="eyebrow">a little something, for you</p>
+  <h1>Happy Birthday,<br><span id="herName">My Love</span> ♡</h1>
+  <p class="sub">Some things are too special to fit inside a message.</p>
+
+  <section class="scene" aria-label="Interactive pink heart">
+    <span class="spark s1">✧</span><span class="spark s2">♡</span><span class="spark s3">✦</span><span class="spark s4">✧</span>
+    <div class="halo"></div>
+    <div class="heart-wrap" id="heartWrap" role="button" tabindex="0" aria-label="Tap the heart">
+      <div class="heart" id="heart"><span class="shine"></span></div>
+    </div>
+    <div class="hint">tap the heart & make a wish</div>
+  </section>
+  <p class="pull">PULL & RELEASE — or simply tap the heart ♡</p>
+
+  <section class="card">
+    <h2>One thing you should know…</h2>
+    <p class="message">Love, I could make a hundred promises, but I'd rather show up for you in a hundred quiet ways. You have this unfair little talent for making an ordinary day feel like it was worth remembering.</p>
+    <p class="signature">And yes, I'm still going to act like I planned all this effortlessly.</p>
+    <button class="primary" id="openLetter">Open your little letter ♡</button>
+  </section>
+
+  <section class="card letter" id="letter">
+    <h2>For you, on your birthday</h2>
+    <p>Happy birthday, my love.</p>
+    <p>There's a certain kind of person who doesn't need to demand attention; the room simply feels different when they're in it. That's you. And somehow, even from a distance, you manage to make my world feel a little less ordinary.</p>
+    <p>I won't pretend I'm the sort of man who has every feeling neatly explained. But I know what I choose: to keep learning you, to celebrate your wins, to stand beside you on the difficult days, and to make sure you never have to guess whether you matter to me.</p>
+    <p>So make a wish today. Laugh too loudly, eat the cake, take too many pictures, and let yourself be celebrated properly. You deserve a year that is gentle with your heart and generous with your dreams.</p>
+    <p>And if the world ever forgets to remind you how extraordinary you are, consider this your reminder from someone who pays attention.</p>
+    <p class="signature">Always in your corner,<br><strong>Your favourite troublemaker ♡</strong></p>
+  </section>
+  <p class="footer">Made with a little courage, a lot of affection, and one pink heart.</p>
+</main>
+<script>
+  const heartWrap = document.getElementById('heartWrap');
+  const heart = document.getElementById('heart');
+  const openLetter = document.getElementById('openLetter');
+  const letter = document.getElementById('letter');
+  let pointerStart = null;
+  function burstHearts() {
+    const symbols = ['♡','♥','✧','💕','✦'];
+    const rect = heart.getBoundingClientRect();
+    for (let i=0; i<13; i++) {
+      const el = document.createElement('span');
+      el.className = 'burst';
+      el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+      el.style.left = (rect.left + rect.width/2 + (Math.random()*180-90)) + 'px';
+      el.style.top = (rect.top + rect.height/2 + (Math.random()*40-20)) + 'px';
+      el.style.color = ['#f34f86','#d95b8a','#f4a0bd','#b94d75'][Math.floor(Math.random()*4)];
+      el.style.animationDelay = (Math.random()*.18)+'s';
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(),1900);
+    }
+    heart.animate([{transform:'rotate(-45deg) scale(1)'},{transform:'rotate(-45deg) scale(1.2)'},{transform:'rotate(-45deg) scale(1)'}],{duration:430,easing:'ease-out'});
+  }
+  heartWrap.addEventListener('click', burstHearts);
+  heartWrap.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();burstHearts();} });
+  heartWrap.addEventListener('pointerdown', e => { pointerStart={x:e.clientX,y:e.clientY}; });
+  heartWrap.addEventListener('pointerup', e => {
+    if(pointerStart && Math.abs(e.clientX-pointerStart.x)>35) burstHearts();
+    pointerStart=null;
+  });
+  openLetter.addEventListener('click', () => {
+    letter.classList.add('show');
+    openLetter.textContent = 'A letter, just for you ♡';
+    openLetter.disabled = true;
+    letter.scrollIntoView({behavior:'smooth',block:'start'});
+    burstHearts();
+  });
+</script>
+</body>
+</html>
